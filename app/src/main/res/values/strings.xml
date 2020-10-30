@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Stefanini Android Test</string>
+    
+    <string name="images_not_found">Nenhuma foto foi encontrada</string>
 </resources>

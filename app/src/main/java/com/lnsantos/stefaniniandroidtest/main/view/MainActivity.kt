@@ -7,6 +7,7 @@ import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.lnsantos.stefaniniandroidtest.R
 import com.lnsantos.stefaniniandroidtest.databinding.ActivityMainBinding
 import com.lnsantos.stefaniniandroidtest.main.adapter.ImageAdapter
 import com.lnsantos.stefaniniandroidtest.main.viewmodel.MainViewModel
@@ -36,7 +37,7 @@ class MainActivity : AppCompatActivity(){
         viewModel.liveDataImages.observe(this){
 
             if (it.isEmpty()){
-                Toast.makeText(this, "Nenhuma foto foi encontrada, teste", Toast.LENGTH_LONG).show()
+                Toast.makeText(this, resources.getString(R.string.images_not_found), Toast.LENGTH_LONG).show()
                 return@observe
             }
 

@@ -24,30 +24,15 @@ class RemoteDownloadImageRepository
 
         val imagesListOfList: List<List<Image?>> = payload.galleries?.map { gallery ->
             gallery.images?.map { image ->
-                validateDataImage(image, gallery.title)
+
+                if (image.height != 0 || image.width != 0 || image.link != null) {
+                    Image().toConvertPayload(image, gallery.title )
+                }else null
+
             } ?: arrayListOf()
         } ?: arrayListOf()
 
         return imagesListOfList.flatten().filterNotNull()
     }
-
-    private fun validateDataImage(imagePayload: ImagePayload, galleryName: String?): Image? {
-        try {
-
-            if (imagePayload.height == 0 ||
-                imagePayload.width == 0 ||
-                imagePayload.link == null
-            ) {
-                return null
-            }
-
-            return Image().toConvertPayload(imagePayload, galleryName)
-        } catch (e: Exception) {
-            Timber.e(e)
-            return null
-        }
-    }
-
-
 
 }
