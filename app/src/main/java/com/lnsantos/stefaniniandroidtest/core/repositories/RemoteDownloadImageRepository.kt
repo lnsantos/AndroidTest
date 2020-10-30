@@ -15,7 +15,7 @@ class RemoteDownloadImageRepository
 @Inject constructor(private val api: ImgurService) : RemoteRepository<Int, List<Image>> {
 
     override suspend fun fetch(page:Int): List<Image> = withContext(Dispatchers.IO) {
-        val response = api.fetchGalleryHot(page)
+        val response = api.fetchGalleryCats(page,"cats")
         return@withContext processPayload(response)
     }
 
